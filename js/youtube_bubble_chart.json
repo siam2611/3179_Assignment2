@@ -1,0 +1,120 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 400,
+    "title": "COVID-19 Cases per Country (13 Oct 2020)",
+    "background": "#f0f0f0",
+    "data": {
+        "url": "https://raw.githubusercontent.com/siam2611/3179_Assignment2/main/data/Global YouTube Statistics.csv"
+    },
+    "params": [
+      {
+        "name": "Continent_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "labels": [
+            "Show All",
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "name": "Continent Selection: "
+        }
+      }],
+    "transform":[
+        {"filter": "datum.Subs2 > 0"},
+        {"filter": "datum.Pop2 > 0"},
+        {
+          "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Subs2",
+          "type": "quantitative",
+          "title":"Subscribers",
+          "axis": {"tickCount": 7},
+          "scale": {"type": "log",  "domain":[1, 8000000000]}
+        },
+        "y": {
+          "field": "Pop2",
+          "type": "quantitative",
+          "title": "Population",
+          "axis": { "tickCount": 6},
+          "scale": {"type": "log", "domain":[1, 1400000000]}
+        }
+      },
+      "layer": [
+        {
+          "mark": "circle",
+          "encoding": {
+            "color": {
+              "field": "Continent",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "North America",
+                  "South America",
+                  "Europe",
+                  "Africa",
+                  "Asia",
+                  "Oceania"
+                ],
+                "range": [
+                  "#e41a1c",
+                  "#984ea3",
+                  "#ff7f00",
+                  "#a6cee3",
+                  "#377eb8",
+                  "#a65628"
+                ]
+              }
+            },
+            "opacity": {"value": 0.6},
+            "tooltip": [
+              {"field": "Countries", "type": "nominal"},
+              {"field": "Subs2", "type": "quantitative", "format": ","},
+              {"field": "Pop2", "type": "quantitative", "format": ","}
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -12,
+            "fontSize": 11.5,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "Countries", "type": "nominal"},
+            "color": {"value": "black"},
+            "opacity": {
+              "condition": {
+                "test": "datum['Countries'] == 'China' || datum['Countries'] == 'Singapore' || datum['Countries'] == 'Australia' || datum['Countries'] == 'New Zealand' || datum['Countries'] == 'Italy' || datum['Countries'] == 'Yemen' ||  datum['Countries'] == 'United States'",                
+                "value": 1
+              },
+              "value": 0
+            },
+            "tooltip": [
+              {"field": "Countries", "type": "nominal"},
+              {"field": "Subs2", "type": "quantitative", "format": ","},
+              {"field": "Pop2", "type": "quantitative", "format": ","}
+            ]
+          }
+        }
+      ]      
+}
