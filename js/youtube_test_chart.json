@@ -1,0 +1,106 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 400,
+    "background": "#f0f0f0",
+    "data": {"url": "https://raw.githubusercontent.com/siam2611/3179_Assignment2/main/data/Global YouTube Statistics.csv"},
+    "params": [
+        {
+          "name": "Continent_selection",
+          "bind": {
+            "input": "select",
+            "options": [
+              null,
+              "North America",
+              "South America",
+              "Europe",
+              "Africa",
+              "Asia",
+              "Oceania"
+            ],
+            "labels": [
+              "Show All",
+              "North America",
+              "South America",
+              "Europe",
+              "Africa",
+              "Asia",
+              "Oceania"
+            ],
+            "name": "Continent Selection: "
+          }
+        }],
+    "transform": [
+      {"calculate": "datum.Subs2 / datum.Pop2", "as": "SubscribersPerCapita"},
+      {
+        "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "Pop2",
+        "type": "quantitative",
+        "title": "Population",
+        "scale": {"type": "log"}
+      },
+      "y": {
+        "field": "Subs2",
+        "type": "quantitative",
+        "title": "Subscribers",
+        "scale": {"type": "log"}
+      }
+    },
+    "config": {
+        "view": {"stroke": "transparent"},
+        "axis": {
+          "grid": false
+        }
+    },
+    "layer": [
+        {
+              "mark": {
+                "type": "circle",
+                "opacity": 0.8,
+                "filled": true
+              },
+          "encoding": {
+            "color": {
+              "field": "Continent",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "North America",
+                  "South America",
+                  "Europe",
+                  "Africa",
+                  "Asia",
+                  "Oceania"
+                ],
+                "range": [
+                  "#e41a1c",
+                  "#984ea3",
+                  "#ff7f00",
+                  "#a6cee3",
+                  "#377eb8",
+                  "#a65628"
+                ]
+              }
+            },
+            "size": {
+                "field": "SubscribersPerCapita",
+                "type": "quantitative",
+                "title": "Subscribers per Capita",
+                "scale": {"range": [30, 300]}
+              },
+              "tooltip": [
+                {"field": "Countries", "title": "Country"},
+                {"field": "Pop2", "title": "Population"},
+                {"field": "Subs2", "title": "Subscribers"},
+                {"field": "SubscribersPerCapita", "title": "Subscribers per Capita"}
+              ]
+          }
+        }
+      ] 
+    
+  }
+  

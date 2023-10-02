@@ -2,7 +2,6 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": "container",
     "height": 400,
-    "title": "Population vs Subscribers",
     "background": "#f0f0f0",
     "data": {
         "url": "https://raw.githubusercontent.com/siam2611/3179_Assignment2/main/data/Global YouTube Statistics.csv"
@@ -34,31 +33,37 @@
         }
       }],
     "transform":[
-        {"filter": "datum.Subs2 > 0"},
-        {"filter": "datum.Pop2 > 0"},
         {
           "filter": "Continent_selection == null || datum.Continent == Continent_selection"
         }
       ],
       "encoding": {
         "x": {
-          "field": "Subs2",
-          "type": "quantitative",
-          "title":"Subscribers",
-          "axis": {"tickCount": 7},
-          "scale": {"type": "log",  "domain":[1, 8000000000]}
-        },
-        "y": {
           "field": "Pop2",
           "type": "quantitative",
-          "title": "Population",
-          "axis": { "tickCount": 6},
-          "scale": {"type": "log", "domain":[1, 1400000000]}
+          "title":"Population",
+          "scale": {"type": "log"}
+        },
+        "y": {
+          "field": "Subs2",
+          "type": "quantitative",
+          "title": "Subscribers",
+          "scale": {"type": "log"}
+        }
+      },
+      "config": {
+        "view": {"stroke": "transparent"},
+        "axis": {
+          "grid": false
         }
       },
       "layer": [
         {
-          "mark": "circle",
+          "mark": {
+            "type": "circle",
+            "opacity": 0.8,
+            "filled": true
+          },
           "encoding": {
             "color": {
               "field": "Continent",
@@ -81,33 +86,6 @@
                   "#a65628"
                 ]
               }
-            },
-            "opacity": {"value": 0.6},
-            "tooltip": [
-              {"field": "Countries", "type": "nominal"},
-              {"field": "Subs2", "type": "quantitative", "format": ","},
-              {"field": "Pop2", "type": "quantitative", "format": ","}
-            ]
-          }
-        },
-        {
-          "mark": {
-            "type": "text",
-            "align": "right",
-            "baseline": "middle",
-            "dx": -12,
-            "fontSize": 11.5,
-            "fontStyle": "italic"
-          },
-          "encoding": {
-            "text": {"field": "Countries", "type": "nominal"},
-            "color": {"value": "black"},
-            "opacity": {
-              "condition": {
-                "test": "datum['Countries'] == 'China' || datum['Countries'] == 'Singapore' || datum['Countries'] == 'Australia' || datum['Countries'] == 'New Zealand' || datum['Countries'] == 'Italy' || datum['Countries'] == 'Yemen' ||  datum['Countries'] == 'United States'",                
-                "value": 1
-              },
-              "value": 0
             },
             "tooltip": [
               {"field": "Countries", "type": "nominal"},
