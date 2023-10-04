@@ -33,6 +33,8 @@
         }
       }],
     "transform":[
+        { "filter": "datum.Year_Highest_Earnings > 0" },
+        { "filter": "datum.Pop2 > 0" },
         {
           "filter": "Continent_selection == null || datum.Continent == Continent_selection"
         }
@@ -45,9 +47,9 @@
           "scale": {"type": "log"}
         },
         "y": {
-          "field": "Subs2",
+          "field": "Year_Highest_Earnings",
           "type": "quantitative",
-          "title": "Subscribers",
+          "title": "Earnings",
           "scale": {"type": "log"}
         }
       },
@@ -89,7 +91,7 @@
             },
             "tooltip": [
               {"field": "Countries", "type": "nominal"},
-              {"field": "Subs2", "type": "quantitative", "format": ","},
+              {"field": "Year_Highest_Earnings", "type": "quantitative", "format": ","},
               {"field": "Pop2", "type": "quantitative", "format": ","}
             ]
           }

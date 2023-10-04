@@ -31,7 +31,13 @@
           }
         }],
     "transform": [
-      {"calculate": "datum.Subs2 / datum.Pop2", "as": "SubscribersPerCapita"},
+      {"calculate": "datum.Year_Highest_Earnings / datum.Pop2", "as": "EarningsPerCapita"},
+      {
+        "filter": "datum.Year_Highest_Earnings > 0"
+      },
+      {
+        "filter": "datum.Pop2 > 0"
+      },
       {
         "filter": "Continent_selection == null || datum.Continent == Continent_selection"
       }
@@ -44,7 +50,7 @@
         "scale": {"type": "log"}
       },
       "y": {
-        "field": "Subs2",
+        "field": "Year_Highest_Earnings",
         "type": "quantitative",
         "title": "Subscribers",
         "scale": {"type": "log"}
@@ -87,16 +93,16 @@
               }
             },
             "size": {
-                "field": "SubscribersPerCapita",
+                "field": "EarningsPerCapita",
                 "type": "quantitative",
-                "title": "Subscribers per Capita",
+                "title": "Earnings per Capita",
                 "scale": {"range": [30, 300]}
               },
               "tooltip": [
                 {"field": "Countries", "title": "Country"},
                 {"field": "Pop2", "title": "Population"},
-                {"field": "Subs2", "title": "Subscribers"},
-                {"field": "SubscribersPerCapita", "title": "Subscribers per Capita"}
+                {"field": "Year_Highest_Earnings", "title": "Yearly Highest Earnings"},
+                {"field": "EarningsPerCapita", "title": "Earnings per Capita"}
               ]
           }
         }
