@@ -1,0 +1,50 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Total YouTube Subs",
+    "width": "container",
+    "height": 400,
+    "projection": {"type": "equalEarth"},
+    "background": "#f0f0f0",
+    "data": {
+      "url": "https://raw.githubusercontent.com/siam2611/3179_Assignment2/main/js/ne_110m.json",
+      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
+    "transform": [
+      {
+        "lookup": "properties.NAME",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/siam2611/3179_Assignment2/main/data/Global YouTube Statistics.csv"
+          },
+          "key": "names",
+          "fields": ["Subs", "Pop"]
+        }
+      },
+      {"calculate": "datum.Subs + 0.1", "as": "Subscribers"}
+    ],
+    "layer": [
+      {
+        "mark": {"type": "geoshape"},
+        "encoding": {
+          "color": {
+            "field": "Subscribers",
+            "type": "quantitative",
+            "scale": {"type": "log"}
+          },
+          "tooltip": [
+            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+            {"field": "Subs", "type": "quantitative"},
+            {"field": "Pop", "type": "quantitative"}
+          ]
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/siam2611/3179_Assignment2/main/js/ne_110m.json",
+          "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+      }
+    ]
+  }
+  

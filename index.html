@@ -47,18 +47,34 @@
     </div>
   </div>
   <div class="container">
-    <div class="graph" id="choropleth_map">
+    <div class="graph" id="choropleth_map2">
     </div>
-    <div class="graph">
-      graph goes here
+    <div class="graph" id="choropleth_map">
     </div>
   </div>
   <div class="container">
     <div class="text">
-      <p>text content goes here</p>
+      <p>This choropleth graph effectively illustrates the distribution of subscribers by country, with dark blue indicating
+        high subscriber counts and green representing lower counts, while yellow denotes countries with minimal or unavailable
+        data. Notably, countries such as the United States, India, Brazil, and South Korea are characterised by dark blue,
+        signifying substantial subscriber numbers and a general trend that correlates larger populations with higher
+        subscriber counts. Nevertheless, it's important to acknowledge that this relationship is not uniform across all
+        nations, as other factors like economic development, technological infrastructure, and cultural influences play a
+        role. The presence of countries in yellow suggests data limitations or exceptionally low subscription rates,
+        influenced by various socio-economic and political factors. This graph provides a valuable snapshot of global
+        subscription patterns, indicating both population-driven trends and regional disparities.</p>
     </div>
     <div class="text">
-      <p>text content goes here</p>
+      <p>This choropleth graph, now normalised for subscribers per capita, reveals significant shifts in the color scheme and
+        provides a fairer basis for comparing countries' subscription patterns. India and Brazil, previously depicted in dark
+        blue, now appear in a lighter blue shade, signifying a lower subscribers-to-population ratio. In contrast, China,
+        which was originally light blue, transitions to yellow, indicating a notably lower subscribers-per-capita ratio. The
+        United States and South Korea maintain their original colors, emphasising their robust performance in terms of
+        subscribers per capita. This normalisation underscores the importance of considering population size when assessing
+        subscription patterns, allowing for a more equitable and insightful comparison among countries. It demonstrates that a
+        high subscriber count alone does not necessarily equate to a strong subscription rate per capita, highlighting the
+        need for nuanced analysis to gauge the true impact of digital services across different nations.
+      </p>
     </div>
   </div>
 
@@ -67,6 +83,10 @@
 
     var spec2 = "js/youtube_choropleth_map.vg.json";
     vegaEmbed('#choropleth_map', spec2).then(function (result) {
+    }).catch(console.error);
+
+    var spec3 = "js/youtube_choropleth_map2.vg.json";
+    vegaEmbed('#choropleth_map2', spec3).then(function (result) {
     }).catch(console.error);
 
     var bubbleSpec = "js/youtube_bubble_chart.json";
