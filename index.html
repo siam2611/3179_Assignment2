@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <h1>Temp Title</h1>
+  <h1>Population Impact on YouTube</h1>
   <div class="container">
     <div class="graph" id="bubble_chart">
     </div>
@@ -77,6 +77,12 @@
       </p>
     </div>
   </div>
+  <div class="container">
+    <div class="graph" id="test">
+    </div>
+    <div class="graph" id="test2">
+    </div>
+  </div>
 
 
   <script type="text/javascript">
@@ -94,9 +100,17 @@
     vegaEmbed('#bubble_chart', bubbleSpec).then(function (result) {
     }).catch(console.error);
 
-    var populationRevenueSpec = "js/youtube_test_chart.json"
+    var populationRevenueSpec = "js/youtube_test_chart.json";
 
     vegaEmbed('#your_new_div_id', populationRevenueSpec).then(function (result) {
+    }).catch(console.error);
+
+    var test = "js/youtube_chart.vg.json";
+    vegaEmbed('#test', test).then(function (result) {
+    }).catch(console.error);
+
+    var test = "js/youtube_chart2.vg.json";
+    vegaEmbed('#test2', test).then(function (result) {
     }).catch(console.error);
 
 

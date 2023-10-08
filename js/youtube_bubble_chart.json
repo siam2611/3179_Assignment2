@@ -49,7 +49,7 @@
         "y": {
           "field": "Year_Highest_Earnings",
           "type": "quantitative",
-          "title": "Earnings",
+          "title": "Highest Yearly Earnings",
           "scale": {"type": "log"}
         }
       },
@@ -71,22 +71,8 @@
               "field": "Continent",
               "type": "nominal",
               "scale": {
-                "domain": [
-                  "North America",
-                  "South America",
-                  "Europe",
-                  "Africa",
-                  "Asia",
-                  "Oceania"
-                ],
-                "range": [
-                  "#e41a1c",
-                  "#984ea3",
-                  "#ff7f00",
-                  "#a6cee3",
-                  "#377eb8",
-                  "#a65628"
-                ]
+                "domain": ["Asia", "Africa", "North America", "Europe", "South America", "Oceania", "Antarctica"],
+                "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2"]
               }
             },
             "tooltip": [
@@ -94,6 +80,27 @@
               {"field": "Year_Highest_Earnings", "type": "quantitative", "format": ","},
               {"field": "Pop2", "type": "quantitative", "format": ","}
             ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -12,
+            "fontSize": 11.5,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "Countries", "type": "nominal"},
+            "color": {"value": "black"},
+            "opacity": {
+              "condition": {
+                "test": "datum['Countries'] == 'India' || datum['Countries'] == 'United States of America' || datum['Countries'] == 'China' || datum['Countries'] == 'Peru' || datum['Countries'] == 'Venezuela' || datum['Countries'] == 'Bangladesh'",
+                "value": 1
+              },
+              "value": 0
+            }
           }
         }
       ]      

@@ -1,0 +1,49 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/siam2611/3179_Assignment2/main/data/Global%20YouTube%20Statistics.csv"
+    },
+    "width": "container",
+    "height": 400,
+    "background": "#f0f0f0",
+    "mark": {
+        "type": "area",
+        "opacity": 0.8
+      },
+    "encoding": {
+      "x": {
+        "field": "created_year",
+        "type": "quantitative",
+        "title": "Year",
+        "axis": {"format": "d"}
+      },
+      "y": {
+        "field": "Channels_Per_100K_People",
+        "type": "quantitative",
+        "title": "Number of Channels Per 100M",
+        "stack": "zero"
+      },
+      "color": {
+        "field": "Cont",
+        "type": "nominal",
+        "title": "Category",
+        "scale": {
+            "domain": ["Asia", "Africa", "North America", "Europe", "South America", "Oceania", "Antarctica"],
+            "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2"]
+          }
+      },
+      "tooltip": [
+        {"field": "created_year", "title": "Year"},
+        {"field": "Youtuber", "title": "Number of Channels", "aggregate": "count"},
+        {"field": "Cont", "title": "Continent"},
+        {"field": "Cont_Pop", "title": "Populaion"},
+        {"field": "Channels_Per_100K_People", "title": "Channels_Per_100K_People"}
+      ]
+    },
+    "transform": [
+      {"filter": {"field": "created_year", "range": [2000, 2023]}},
+      {"filter": "datum.Country != 'nan'"},
+      {"calculate": "datum.Youtuber_Count / (datum.Cont_Pop / 100000000)", "as": "Channels_Per_100K_People"}
+    ]
+  }
+  
