@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <div class="sssss">  
+  <div class="top">  
     <div id="title">Population Impact on YouTube</div>
     <div class="intro">
       <br>
@@ -29,14 +29,17 @@
       statistics such as <strong>earnings, subscribers, and the number of YouTube channels.</strong> We present a dual perspective: on the left
       side, you'll find <strong>absolute data,</strong> showing the direct impact of <strong>population</strong> on these metrics. On the right, we've
       <strong>normalised</strong> the data, allowing readers to make fair comparisons across <strong>countries</strong> of varying sizes. The dataset used was
-      obtained from <a href="https://www.kaggle.com/datasets/nelgiriyewithana/global-youtube-statistics-2023">Kaggle</a>.
+      obtained from <a href="https://www.kaggle.com/datasets/nelgiriyewithana/global-youtube-statistics-2023">Kaggle</a> (author: NIDULA ELGIRIYEWITHAN).
+      <br>
+      <br>
+      Visualisation created by Siam Ahmed
     </div>
   </div>
   <br>
   <div class="container">
-    <div class="graph" id="bubble_chart">
+    <div class="graph" id="scatter_plot">
     </div>
-    <div class="graph" id="your_new_div_id">
+    <div class="graph" id="scatter_plot2">
     </div>
   </div>
   <div class="container">
@@ -80,11 +83,11 @@
         subscription patterns, indicating both population-driven trends and regional disparities.</p>
     </div>
     <div class="text">
-      <p>This choropleth graph, now normalised for subscribers per capita, reveals significant shifts in the color scheme and
+      <p>This choropleth graph, now normalised for subscribers per capita, reveals significant shifts in the colour scheme and
         provides a fairer basis for comparing countries' subscription patterns. India and Brazil, previously depicted in dark
         blue, now appear in a lighter blue shade, signifying a lower subscribers-to-population ratio. In contrast, China,
         which was originally light blue, transitions to yellow, indicating a notably lower subscribers-per-capita ratio. The
-        United States and South Korea maintain their original colors, emphasising their robust performance in terms of
+        United States and South Korea maintain their original colours, emphasising their robust performance in terms of
         subscribers per capita. This normalisation underscores the importance of considering population size when assessing
         subscription patterns, allowing for a more equitable and insightful comparison among countries. It demonstrates that a
         high subscriber count alone does not necessarily equate to a strong subscription rate per capita, highlighting the
@@ -93,9 +96,9 @@
     </div>
   </div>
   <div class="container">
-    <div class="graph" id="test">
+    <div class="graph" id="area_chart">
     </div>
-    <div class="graph" id="test2">
+    <div class="graph" id="area_chart2">
     </div>
   </div>
   <div class="container">
@@ -115,7 +118,7 @@
         exhibited a substantial area in the chart, now appears as the second smallest after Africa. This change indicates
         that, when adjusted for population size, Asia's growth in channels per capita is not as significant as previously
         suggested. Conversely, North America maintains a large area, highlighting its continued strength in terms of channels
-        per 100 million people. Oceania experiences a substana  tial increase in area, suggesting significant growth in channels
+        per 100 million people. Oceania experiences a substantial increase in area, suggesting significant growth in channels
         per capita, likely influenced by improved digital infrastructure. This normalisation underscores the necessity of
         considering population size when evaluating media landscape trends, as it allows for a more equitable comparison among
         continents, revealing nuanced patterns that might otherwise be obscured.
@@ -126,30 +129,28 @@
 
   <script type="text/javascript">
 
-    var spec2 = "js/youtube_choropleth_map.vg.json";
-    vegaEmbed('#choropleth_map', spec2).then(function (result) {
+    var spec = "js/youtube_choropleth_map.vg.json";
+    vegaEmbed('#choropleth_map', spec).then(function (result) {
     }).catch(console.error);
 
-    var spec3 = "js/youtube_choropleth_map2.vg.json";
-    vegaEmbed('#choropleth_map2', spec3).then(function (result) {
+    var spec2 = "js/youtube_choropleth_map2.vg.json";
+    vegaEmbed('#choropleth_map2', spec2).then(function (result) {
     }).catch(console.error);
 
-    var bubbleSpec = "js/youtube_bubble_chart.json";
-
-    vegaEmbed('#bubble_chart', bubbleSpec).then(function (result) {
+    var spec3 = "js/youtube_scatter_plot.json";
+    vegaEmbed('#scatter_plot', spec3).then(function (result) {
     }).catch(console.error);
 
-    var populationRevenueSpec = "js/youtube_test_chart.json";
-
-    vegaEmbed('#your_new_div_id', populationRevenueSpec).then(function (result) {
+    var spec4 = "js/youtube_scatter_plot2.json";
+    vegaEmbed('#scatter_plot2', spec4).then(function (result) {
     }).catch(console.error);
 
-    var test = "js/youtube_chart.vg.json";
-    vegaEmbed('#test', test).then(function (result) {
+    var spec5 = "js/youtube_area_chart.vg.json";
+    vegaEmbed('#area_chart', spec5).then(function (result) {
     }).catch(console.error);
 
-    var test = "js/youtube_chart2.vg.json";
-    vegaEmbed('#test2', test).then(function (result) {
+    var spec6 = "js/youtube_area_chart2.vg.json";
+    vegaEmbed('#area_chart2', spec6).then(function (result) {
     }).catch(console.error);
 
 
