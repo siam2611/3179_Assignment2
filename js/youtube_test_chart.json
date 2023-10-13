@@ -3,6 +3,7 @@
     "width": "container",
     "height": 400,
     "background": "#f0f0f0",
+    "title": "Population vs Earnings (Normalised)",
     "data": {"url": "https://raw.githubusercontent.com/siam2611/3179_Assignment2/main/data/Global YouTube Statistics.csv"},
     "params": [
         {
@@ -46,13 +47,13 @@
       "x": {
         "field": "Pop2",
         "type": "quantitative",
-        "title": "Population",
+        "title": "Population (log scale)",
         "scale": {"type": "log"}
       },
       "y": {
         "field": "Year_Highest_Earnings",
         "type": "quantitative",
-        "title": "Highest Yearly Earnings",
+        "title": "Yearly Highest Earnings (log scale)",
         "scale": {"type": "log"}
       }
     },

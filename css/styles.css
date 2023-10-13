@@ -1,5 +1,24 @@
+.sssss{
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 50%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.sssss {
+    background-color: #f0f0f0;
+    border-radius: 30px;
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
-	font-family: Arial, sans-serif;
+    font-family: 'Maven Pro', sans-serif;
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -22,15 +41,17 @@ body {
 }
 
 .text {
+    font-family: 'Maven Pro', sans-serif;
 	flex: 1;
 	padding: 20px;
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 }
 
-h1 {
-	font-family: Georgia, serif;
-	font-size: 30px; 
+#title {
+	font-family: 'Lobster', cursive;	
+	font-size: 45px; 
+	text-align: center;
   }
   
 p {text-align: center;}

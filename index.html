@@ -5,7 +5,7 @@
   <!-- Import Vega & Vega-Lite -->
   <meta charset="UTF-8">
   <meta name="viewport" conent="width=device-width, initial-scale=1.0">
-  <title>Temp title</title>
+  <title>Population Impact on YouTube Statistics</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
@@ -13,11 +13,26 @@
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Maven Pro' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+
 
 </head>
 
 <body>
-  <h1>Population Impact on YouTube</h1>
+  <div class="sssss">  
+    <div id="title">Population Impact on YouTube</div>
+    <div class="intro">
+      <br>
+      This data-driven exploration seeks to shed light on the fascinating connection between <strong>population</strong> and key <strong>YouTube</strong>
+      statistics such as <strong>earnings, subscribers, and the number of YouTube channels.</strong> We present a dual perspective: on the left
+      side, you'll find <strong>absolute data,</strong> showing the direct impact of <strong>population</strong> on these metrics. On the right, we've
+      <strong>normalised</strong> the data, allowing readers to make fair comparisons across <strong>countries</strong> of varying sizes. The dataset used was
+      obtained from <a href="https://www.kaggle.com/datasets/nelgiriyewithana/global-youtube-statistics-2023">Kaggle</a>.
+    </div>
+  </div>
+  <br>
   <div class="container">
     <div class="graph" id="bubble_chart">
     </div>
